@@ -1,0 +1,29 @@
+# Archivos sensibles
+*.env
+settings.py
+
+# Archivos de configuración local
+__pycache__/
+*.pyc
+*.pyo
+*.log
+
+# Archivos de bases de datos
+db.sqlite3
+
+# Archivos de dependencias
+node_modules/
+package-lock.json
+yarn.lock
+
+# Archivos de compilación
+build/
+dist/
+
+# Archivos de medios y subidos
+media/
+documentos/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db

@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi empresa S.L.</title>
+    <link rel="stylesheet" href="{% static 'chatbot_app/chatbot_styles.css' %}">
+    <script src="{% static 'chatbot_app/chatbot_script.js' %}" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Mi empresa S.L.</h1>
+    </header>
+
+    <main>
+        <section class="toggle-container">
+            <label for="tipo-lead-toggle" class="toggle-label">Tipo de Lead</label>
+            <label class="switch">
+                <input type="checkbox" id="tipo-lead-toggle">
+                <span class="slider"></span>
+            </label>
+            <span id="lead-type-display">New Lead</span>
+        </section>
+
+        <section>
+            <label for="programa-select">Programas:</label>
+            <select id="programa-select">
+                <option value="">Seleccione un programa</option>
+            </select>
+        </section>
+
+        <section id="momentos-section" style="display:none;">
+            <label for="momento-select">Momentos:</label>
+            <div id="momento-select"></div>
+        </section>
+
+        <section id="submomentos-section" style="display:none;">
+            <label for="momento-select">SubMomentos:</label>
+            <div id="submoments-container"></div> 
+        </section>
+
+        <section>
+            <button id="historial">Historial</button>
+            <button id="nueva-conversacion">Nueva Conversación</button>
+        </section>
+
+        <!-- Nueva Conversación Modal -->
+<div id="nuevaConversacionModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeNuevaConversacion">&times;</span>
+        <h2>Nueva Conversación</h2>
+        <p>Inicia una nueva conversación aquí.</p>
+    </div>
+</div>
+
+
+
+
+        <section>
+            <textarea id="consulta" placeholder="Escribe tu consulta"></textarea>
+            <button id="enviar-consulta">Enviar</button>
+        </section>
+
+        <!-- Modal para historial -->
+        <div id="historialModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Historial</h2>
+                <div id="historial-content"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mi empresa S.L.</p>
+    </footer>
+</body>
+</html>
