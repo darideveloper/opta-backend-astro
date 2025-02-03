@@ -18,7 +18,7 @@ class Programa(models.Model):
 
 class Momento(models.Model):
     nombre = models.CharField(max_length=100)
-    respuesta_momento = models.TextField(null=True, blank=True)  #  opcional
+    respuesta_momento = models.TextField(null=True, blank=True)
     programa = models.ForeignKey(Programa, on_delete=models.CASCADE)
 
     def __str__(self):
