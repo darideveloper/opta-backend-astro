@@ -1,6 +1,5 @@
 # Archivos sensibles
 *.env
-settings.py
 
 # Archivos de configuración local
 __pycache__/
@@ -27,3 +26,5 @@ documentos/
 # Archivos del sistema operativo
 .DS_Store
 Thumbs.db
+
+/venv/
