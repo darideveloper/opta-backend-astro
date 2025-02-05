@@ -16,6 +16,15 @@ class TipoLeadViewSet(viewsets.ModelViewSet):
 class ProgramaViewSet(viewsets.ModelViewSet):
     queryset = Programa.objects.all()
     serializer_class = ProgramaSerializer
+    
+    def get_queryset(self):
+        
+        queryset = Programa.objects.all()
+        
+        tipo_lead_id = self.request.GET.get('tipo_lead_id')
+        if tipo_lead_id:
+            return queryset.filter(tipo_lead_id=tipo_lead_id)
+        return queryset
 
 
 class MomentoViewSet(viewsets.ModelViewSet):
