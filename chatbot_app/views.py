@@ -30,6 +30,15 @@ class ProgramaViewSet(viewsets.ModelViewSet):
 class MomentoViewSet(viewsets.ModelViewSet):
     queryset = Momento.objects.all()
     serializer_class = MomentoSerializer
+    
+    def get_queryset(self):
+        
+        queryset = Momento.objects.all()
+        
+        programa_id = self.request.GET.get('programa_id')
+        if programa_id:
+            return queryset.filter(programa_id=programa_id)
+        return queryset
 
 
 class SubmomentoViewSet(viewsets.ModelViewSet):
