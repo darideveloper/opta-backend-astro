@@ -1,57 +1,39 @@
 from django.contrib import admin
-from .models import (
-    TipoLead,
-    Programa,
-    Momento,
-    Submomento,
-    Respuesta,
-    Documento
-)
+from chatbot_app import models
 
 
-@admin.register(TipoLead)
+@admin.register(models.TipoLead)
 class TipoLeadAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nombre')
+    list_display = ("nombre",)
 
 
-@admin.register(Programa)
+@admin.register(models.Programa)
 class ProgramaAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nombre', 'tipo_lead')
-    list_filter = ('tipo_lead',)
+    list_display = ("nombre", "tipo_lead")
+    list_filter = ("tipo_lead",)
 
 
-@admin.register(Momento)
+@admin.register(models.Momento)
 class MomentoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nombre', 'programa', 'programa__tipo_lead')
-    list_filter = ('programa',)
+    list_display = ("nombre", "programa__nombre", "programa__tipo_lead")
+    list_filter = ("programa",)
 
 
-@admin.register(Submomento)
+@admin.register(models.Submomento)
 class SubmomentoAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nombre', 'momento', 'programa', 'tipo_lead')
-    list_filter = ('momento', 'programa', 'tipo_lead')
+    list_display = (
+        "nombre",
+        "momento__nombre",
+        "momento__programa__nombre",
+        "momento__programa__tipo_lead",
+    )
+    list_filter = ("momento", "momento__programa", "momento__programa__tipo_lead")
+    list_per_page = 20
 
 
-@admin.register(Respuesta)
+@admin.register(models.Respuesta)
 class RespuestaAdmin(admin.ModelAdmin):
-    list_display = ('id', 'contenido', 'prioridad', 'submomento')
-    list_filter = ('submomento',)
-
-
-# # @admin.register(Historial)
-# # class HistorialAdmin(admin.ModelAdmin):
-# #     readonly_fields = ('momento', 'submomento', 'respuesta', 'timestamp')  # Campos de solo lectura
-# #     list_display = ('momento', 'submomento', 'respuesta', 'timestamp')  # Para mostrar en la lista del admin
-
-# @admin.register(Documento)
-# class DocumentoAdmin(admin.ModelAdmin):
-#     list_display = ('id', 'nombre', 'archivo', 'palabras_clave')
-#     search_fields = ('palabras_clave',)
-
-
-# admin.site.register(TipoLead)
-# admin.site.register(Programa)
-# admin.site.register(Momento)
-# admin.site.register(Submomento)
-# admin.site.register(Respuesta)
-# admin.site.register(Documento)
+    list_display = ("titulo", "prioridad", "submomento__nombre")
+    list_filter = ("submomento",)
+    search_fields = ("titulo", "contenido")
+    list_per_page = 20
