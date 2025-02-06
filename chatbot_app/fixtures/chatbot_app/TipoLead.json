@@ -1,0 +1,16 @@
+[
+    {
+        "model": "chatbot_app.TipoLead",
+        "pk": 1,
+        "fields": {
+            "nombre": "Lead A"
+        }
+    },
+    {
+        "model": "chatbot_app.TipoLead",
+        "pk": 2,
+        "fields": {
+            "nombre": "Lead B"
+        }
+    }
+]
