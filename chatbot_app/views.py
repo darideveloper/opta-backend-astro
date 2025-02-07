@@ -44,6 +44,15 @@ class MomentoViewSet(viewsets.ModelViewSet):
 class SubmomentoViewSet(viewsets.ModelViewSet):
     queryset = Submomento.objects.all()
     serializer_class = SubmomentoSerializer
+    
+    def get_queryset(self):
+        
+        queryset = Submomento.objects.all()
+        
+        momento_id = self.request.GET.get('momento_id')
+        if momento_id:
+            return queryset.filter(momento_id=momento_id)
+        return queryset
 
 
 class RespuestaViewSet(viewsets.ModelViewSet):
