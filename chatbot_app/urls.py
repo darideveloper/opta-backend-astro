@@ -15,9 +15,6 @@ router.register(r'respuesta', views.RespuestaViewSet, 'respuesta')
 router.register(r'documento', views.DocumentoViewSet, 'documento')
 
 urlpatterns = [
-
-
     path('api/', include(router.urls)),
     path('docs/', include_docs_urls(title="Chat Assistent API")),
-
 ]
