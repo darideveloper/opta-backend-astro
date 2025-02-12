@@ -58,6 +58,16 @@ class SubmomentoViewSet(viewsets.ModelViewSet):
 class RespuestaViewSet(viewsets.ModelViewSet):
     queryset = Respuesta.objects.all()
     serializer_class = RespuestaSerializer
+    
+    def get_queryset(self):
+        
+        queryset = Respuesta.objects.all().order_by('prioridad')
+        
+        submomento_id = self.request.GET.get('submomento_id')
+        if submomento_id:
+            return queryset.filter(submomento_id=submomento_id)
+        
+        return queryset
 
 
 class DocumentoViewSet(viewsets.ModelViewSet):
