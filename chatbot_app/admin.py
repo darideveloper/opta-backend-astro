@@ -37,3 +37,10 @@ class RespuestaAdmin(admin.ModelAdmin):
     list_filter = ("submomento",)
     search_fields = ("titulo", "contenido")
     list_per_page = 20
+
+
+@admin.register(models.Documento)
+class DocumentoAdmin(admin.ModelAdmin):
+    list_display = ("nombre", "archivo")
+    search_fields = ("nombre", "palabras_clave")
+    list_per_page = 20
