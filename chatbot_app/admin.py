@@ -15,25 +15,20 @@ class ProgramaAdmin(admin.ModelAdmin):
 
 @admin.register(models.Momento)
 class MomentoAdmin(admin.ModelAdmin):
-    list_display = ("nombre", "programa__nombre", "programa__tipo_lead")
+    list_display = ("nombre", "programa")
     list_filter = ("programa",)
 
 
 @admin.register(models.Submomento)
 class SubmomentoAdmin(admin.ModelAdmin):
-    list_display = (
-        "nombre",
-        "momento__nombre",
-        "momento__programa__nombre",
-        "momento__programa__tipo_lead",
-    )
+    list_display = ("nombre", "momento")
     list_filter = ("momento", "momento__programa", "momento__programa__tipo_lead")
     list_per_page = 20
 
 
 @admin.register(models.Respuesta)
 class RespuestaAdmin(admin.ModelAdmin):
-    list_display = ("titulo", "prioridad", "submomento__nombre")
+    list_display = ("titulo", "prioridad", "submomento")
     list_filter = ("submomento",)
     search_fields = ("titulo", "contenido")
     list_per_page = 20

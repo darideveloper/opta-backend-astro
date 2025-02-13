@@ -28,3 +28,8 @@ documentos/
 Thumbs.db
 
 /venv/
+
+.env.*
+
+staticfiles/
+static/
