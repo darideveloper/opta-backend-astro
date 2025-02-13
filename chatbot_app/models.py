@@ -39,12 +39,13 @@ class Submomento(models.Model):
 
 class Respuesta(models.Model):
     id = models.AutoField(primary_key=True)
-    titulo = models.CharField(max_length=200, default='Respuesta')
+    titulo = models.CharField(max_length=200)
     contenido = models.TextField()
     prioridad = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     submomento = models.ForeignKey(Submomento, on_delete=models.CASCADE)
+    documento = models.ForeignKey('Documento', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return f"{self.titulo} - {self.submomento}"
