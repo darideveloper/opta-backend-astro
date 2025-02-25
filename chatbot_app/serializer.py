@@ -27,9 +27,15 @@ class SubmomentoSerializer(serializers.ModelSerializer):
 
 
 class RespuestaSerializer(serializers.ModelSerializer):
+    
+    documento_url = serializers.SerializerMethodField()
+    
     class Meta:
         model = Respuesta
         fields = '__all__'
+        
+    def get_documento_url(self, obj):
+        return obj.documento.archivo.url if obj.documento else None
 
 
 class DocumentoSerializer(serializers.ModelSerializer):
