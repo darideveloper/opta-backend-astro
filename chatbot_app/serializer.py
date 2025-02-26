@@ -2,6 +2,12 @@ from rest_framework import serializers
 from .models import TipoLead, Programa, Momento, Submomento, Respuesta, Documento
 
 
+class DocumentoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Documento
+        fields = '__all__'
+
+
 class TipoLeadSerializer(serializers.ModelSerializer):
     class Meta:
         model = TipoLead
@@ -28,14 +34,11 @@ class SubmomentoSerializer(serializers.ModelSerializer):
 
 class RespuestaSerializer(serializers.ModelSerializer):
     
-    documento_url = serializers.SerializerMethodField()
+    documento = DocumentoSerializer()
     
     class Meta:
         model = Respuesta
         fields = '__all__'
-        
-    def get_documento_url(self, obj):
-        return obj.documento.archivo.url if obj.documento else None
 
 
 class DocumentoSerializer(serializers.ModelSerializer):
