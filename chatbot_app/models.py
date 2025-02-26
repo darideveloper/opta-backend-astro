@@ -45,7 +45,7 @@ class Respuesta(models.Model):
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )
     submomento = models.ForeignKey(Submomento, on_delete=models.CASCADE)
-    documento = models.ForeignKey('Documento', on_delete=models.CASCADE, null=True)
+    documento = models.ForeignKey('Documento', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return f"{self.titulo} - {self.submomento}"
