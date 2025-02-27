@@ -1,0 +1,20 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block extrahead %}
+{{ block.super }}
+<!-- Load tags libraries -->
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+
+<!-- load custom.js file -->
+<script>
+  setTimeout(function () {
+    var script = document.createElement('script')
+    script.src = "{% static '/core/js/custom.js' %}"
+    script.type = 'text/javascript'
+    document.getElementsByTagName('head')[0].appendChild(script)
+  }, 100);
+</script>
+{% endblock %}
