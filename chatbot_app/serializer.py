@@ -44,4 +44,4 @@ class RespuestaSerializer(serializers.ModelSerializer):
 class DocumentoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Documento
-        fields = '__all__'
+        exclude = ['palabras_clave']
