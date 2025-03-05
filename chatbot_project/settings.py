@@ -109,6 +109,11 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+    "https://opta.apps.darideveloper.com"
+]
+
 
 # # Permitir solicitudes desde cualquier origen (en un entorno de desarrollo,
 # puedes limitarlo más tarde)
