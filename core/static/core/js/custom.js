@@ -37,6 +37,7 @@ class AdminSetup {
     // Methods to run for each page
     const methods = {
       "modificar documento": [this.#setupTagify('[name="palabras_clave"]')],
+      "añadir documento": [this.#setupTagify('[name="palabras_clave"]')],
     }
 
     // Run the methods for the current page
