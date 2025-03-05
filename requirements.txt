@@ -21,3 +21,4 @@ python-dotenv==1.0.1
 django-storages==1.14.4
 boto3==1.36.20
 whitenoise==6.2.0
+gunicorn==20.1.0
