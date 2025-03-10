@@ -107,11 +107,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # cors autherizations
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://darideveloper.github.io",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
-    "https://opta.apps.darideveloper.com"
+    "https://opta.apps.darideveloper.com",
+    "https://darideveloper.github.io",
 ]
 
 
