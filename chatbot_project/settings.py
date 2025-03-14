@@ -129,8 +129,7 @@ CORS_ALLOW_CREDENTIALS = True
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        'core.authentication.ExpiringTokenAuthentication',
     ]
 }
 
@@ -289,3 +288,6 @@ JAZZMIN_SETTINGS = {
     #     "auth.group": "carousel"
     # },
 }
+
+
+TOKEN_EXPIRED_AFTER_SECONDS = 9 * 60 * 60  # 9 hours

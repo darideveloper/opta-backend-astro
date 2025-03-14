@@ -1,9 +1,7 @@
 from django.db.models import Q
 
-
 from rest_framework import viewsets
-from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
+
 
 from chatbot_app.models import (
     TipoLead,
@@ -23,19 +21,13 @@ from chatbot_app.serializer import (
 )
 
 
-# Base class
-class BaseViewAuth(viewsets.ModelViewSet):
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
-
-
 # Api classes
-class TipoLeadViewSet(BaseViewAuth):
+class TipoLeadViewSet(viewsets.ModelViewSet):
     serializer_class = TipoLeadSerializer
     queryset = TipoLead.objects.all()
 
 
-class ProgramaViewSet(BaseViewAuth):
+class ProgramaViewSet(viewsets.ModelViewSet):
     queryset = Programa.objects.all()
     serializer_class = ProgramaSerializer
 
@@ -49,7 +41,7 @@ class ProgramaViewSet(BaseViewAuth):
         return queryset
 
 
-class MomentoViewSet(BaseViewAuth):
+class MomentoViewSet(viewsets.ModelViewSet):
     queryset = Momento.objects.all()
     serializer_class = MomentoSerializer
 
@@ -63,7 +55,7 @@ class MomentoViewSet(BaseViewAuth):
         return queryset
 
 
-class SubmomentoViewSet(BaseViewAuth):
+class SubmomentoViewSet(viewsets.ModelViewSet):
     queryset = Submomento.objects.all()
     serializer_class = SubmomentoSerializer
 
@@ -77,7 +69,7 @@ class SubmomentoViewSet(BaseViewAuth):
         return queryset
 
 
-class RespuestaViewSet(BaseViewAuth):
+class RespuestaViewSet(viewsets.ModelViewSet):
     queryset = Respuesta.objects.all()
     serializer_class = RespuestaSerializer
 
@@ -92,7 +84,7 @@ class RespuestaViewSet(BaseViewAuth):
         return queryset
 
 
-class DocumentoViewSet(BaseViewAuth):
+class DocumentoViewSet(viewsets.ModelViewSet):
     serializer_class = DocumentoSerializer
 
     def get_queryset(self):
