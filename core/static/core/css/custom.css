@@ -1,0 +1,10 @@
+.jazzmin-page img {
+  width: 200px;
+}
+
+.brand-link.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}/*# sourceMappingURL=custom.css.map */
