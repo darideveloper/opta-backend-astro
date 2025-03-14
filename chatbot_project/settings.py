@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     # Modules
     'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken',
     'coreapi',
     
     # Django apps
@@ -127,6 +128,10 @@ CORS_ALLOW_CREDENTIALS = True
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
 }
 
 # Storage settings

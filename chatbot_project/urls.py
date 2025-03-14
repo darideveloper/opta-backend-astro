@@ -4,6 +4,8 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 
+from rest_framework.authtoken import views as authtoken_views
+
 
 urlpatterns = [
     # Redirects
@@ -16,6 +18,9 @@ urlpatterns = [
     # Apps
     path('admin/', admin.site.urls),
     path('', include('chatbot_app.urls')),  # Redirige al `chatbot_app`
+    
+    # Auth
+    path('api/login/', authtoken_views.obtain_auth_token)
 ]
 
 if not settings.STORAGE_AWS:
