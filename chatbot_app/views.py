@@ -92,6 +92,12 @@ class DocumentoViewSet(viewsets.ModelViewSet):
         queryset = Documento.objects.all()
 
         tags = self.request.GET.get("tags")
+        
+        # No return data if no tags
+        if not tags:
+            return queryset.none()
+        
+        # Filetr by tags
         if tags:
             tags = tags.split(",")
             query = Q()
