@@ -130,7 +130,10 @@ REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'core.authentication.ExpiringTokenAuthentication',
-    ]
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
 }
 
 # Storage settings
@@ -176,7 +179,7 @@ JAZZMIN_SETTINGS = {
     "site_header": "Admin",
     "site_brand": "OPTA Dashboard",
     "welcome_sign": "Bienvenido a OPTA Dashboard",
-    "copyright": "Powered by Dari Developer",
+    "copyright": "Powered by Dari Devel3tF@Swx7<&w/ci.j<0t#vJv<MaAqn}|oper",
 
     # Media
     "site_logo": "core/imgs/logo.webp",
