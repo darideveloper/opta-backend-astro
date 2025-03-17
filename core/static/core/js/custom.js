@@ -5,7 +5,7 @@ class AdminSetup {
  */
   constructor() {
     // Get current page
-    this.currentPage = document.querySelector('#content h1').textContent.toLowerCase().trim()
+    this.currentPage = document.querySelector('.content h1').textContent.toLowerCase().trim()
     console.log(this.currentPage)
 
     // Run methods in each page
