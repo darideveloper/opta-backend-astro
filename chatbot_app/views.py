@@ -11,7 +11,7 @@ from chatbot_app.models import (
     Respuesta,
     Documento,
 )
-from chatbot_app.serializer import (
+from chatbot_app.serializers import (
     TipoLeadSerializer,
     ProgramaSerializer,
     MomentoSerializer,

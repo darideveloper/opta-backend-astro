@@ -17,7 +17,8 @@ urlpatterns = [
     
     # Apps
     path('admin/', admin.site.urls),
-    path('', include('chatbot_app.urls')),  # Redirige al `chatbot_app`
+    path('', include('chatbot_app.urls')),
+    path('', include('core.urls')),
     
     # Auth
     path('api/login/', authtoken_views.obtain_auth_token)
