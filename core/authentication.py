@@ -1,3 +1,4 @@
+from time import sleep
 from datetime import timedelta
 
 from django.conf import settings
@@ -29,6 +30,7 @@ class ExpiringTokenAuthentication(TokenAuthentication):
         expired = is_token_expired(token)
         if expired:
             token.delete()
+            sleep(1)
             Token.objects.create(user=token.user)
             raise AuthenticationFailed("Token has expired")
 
