@@ -21,5 +21,11 @@ tag.tagify__input {
 
 .user-panel.d-flex {
   display: none !important;
-  border: 2px solid red;
+}
+
+.form-group.field-groups > .row, .form-group.field-user_permissions > .row {
+  flex-direction: column;
+}
+.form-group.field-groups > .row > div, .form-group.field-user_permissions > .row > div {
+  max-width: 100% !important;
 }/*# sourceMappingURL=custom.css.map */

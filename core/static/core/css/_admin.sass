@@ -23,4 +23,11 @@ tag.tagify__input
 // Remove avatar in sidebar
 .user-panel.d-flex
     display: none !important
-    border: 2px solid red
+
+// Bigger groups and permissions
+.form-group.field-groups, .form-group.field-user_permissions
+    > .row
+        flex-direction: column
+
+        > div
+            max-width: 100% !important
