@@ -17,4 +17,9 @@
 
 tag.tagify__input {
   margin-block: 3px !important;
+}
+
+.user-panel.d-flex {
+  display: none !important;
+  border: 2px solid red;
 }/*# sourceMappingURL=custom.css.map */

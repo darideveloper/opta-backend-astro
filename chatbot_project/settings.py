@@ -172,7 +172,7 @@ JAZZMIN_SETTINGS = {
     "site_header": "Admin",
     "site_brand": "OPTA Dashboard",
     "welcome_sign": "Bienvenido a OPTA Dashboard",
-    "copyright": "Powered by Dari Devel3tF@Swx7<&w/ci.j<0t#vJv<MaAqn}|oper",
+    "copyright": "Powered by Dari Developer",
 
     # Media
     "site_logo": "core/imgs/logo.webp",
