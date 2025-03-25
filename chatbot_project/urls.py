@@ -4,8 +4,7 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 
-from rest_framework.authtoken import views as authtoken_views
-
+from core.views import CustomObtainAuthToken
 
 urlpatterns = [
     # Redirects
@@ -21,7 +20,7 @@ urlpatterns = [
     path('', include('core.urls')),
     
     # Auth
-    path('api/login/', authtoken_views.obtain_auth_token)
+    path('api/login/', CustomObtainAuthToken.as_view()),
 ]
 
 if not settings.STORAGE_AWS:

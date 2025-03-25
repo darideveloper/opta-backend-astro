@@ -29,7 +29,9 @@ class ExpiringTokenAuthentication(TokenAuthentication):
 
         expired = is_token_expired(token)
         if expired:
-            token.delete()
+            
+            # Delete all user tokens
+            Token.objects.filter(user=token.user).delete()
             sleep(1)
             Token.objects.create(user=token.user)
             raise AuthenticationFailed("Token has expired")
