@@ -2,7 +2,7 @@
   width: 200px;
 }
 
-.brand-link.active {
+aside > a.brand-link {
   display: flex;
   align-items: center;
   justify-content: center;
