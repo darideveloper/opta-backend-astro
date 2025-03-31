@@ -14,6 +14,7 @@ print(f'\nEnvironment: {ENV}')
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 STORAGE_AWS = os.environ.get("STORAGE_AWS") == "True"
+LANDING_HOST = os.getenv('LANDING_HOST')
 
 print(f"DEBUG: {DEBUG}")
 print(f"STORAGE_AWS: {STORAGE_AWS}\n")
@@ -194,7 +195,7 @@ JAZZMIN_SETTINGS = {
 
     # Links to put along the top menu
     "topmenu_links": [
-        # {"name": "Landing", "url": LANDING_HOST},
+        {"name": "Opta App", "url": LANDING_HOST},
     ],
 
     #############
