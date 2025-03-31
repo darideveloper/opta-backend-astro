@@ -3,8 +3,12 @@
 
 {% block extrahead %}
 {{ block.super }}
-<!-- Load tags libraries -->
+<!-- Load tagify libraries -->
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+
+<!-- Load markdown libraries -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 {% endblock %}

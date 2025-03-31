@@ -42,26 +42,56 @@ class AdminSetup {
     })
   }
 
+  #setupMarkDown() {
+
+    // Get text areas
+    const noMarkdownIds = [""]
+    let textAreasSelector = 'div > textarea'
+    textAreasSelector = noMarkdownIds.map(id => `${textAreasSelector}:not(#id_${id})`).join(", ")
+    const textAreas = document.querySelectorAll(textAreasSelector)
+
+    setTimeout(() => {
+      textAreas.forEach(textArea => {
+
+        new SimpleMDE({
+          element: textArea,
+          toolbar: [
+            "bold", "italic", "heading", "|",
+            "quote", "code", "link", "image", "|",
+            "unordered-list", "ordered-list", "|",
+            "undo", "redo", "|",
+            "preview",
+          ],
+          spellChecker: false,
+        })
+      })
+    }, 100)
+  }
+
   /**
    * Run the functions for the current page
    */
   autorun() {
 
-    // Global methods
-    this.#setupTopmenuLinksStyle()
+    setTimeout(() => {
+      // Global methods
+      this.#setupTopmenuLinksStyle()
 
-    // Methods to run for each page
-    const methods = {
-      "modificar documento": [this.#setupTagify('[name="palabras_clave"]')],
-      "añadir documento": [this.#setupTagify('[name="palabras_clave"]')],
-    }
-
-    // Run the methods for the current page
-    if (methods[this.currentPage]) {
-      for (let method of methods[this.currentPage]) {
-        method.call(this)
+      // Methods to run for each page
+      const methods = {
+        "documentos": [() => {this.#setupTagify('[name="palabras_clave"]')}],
+        "respuestas": [this.#setupMarkDown],
       }
-    }
+
+      // Run the methods for the current page
+      if (methods[this.currentPage]) {
+        for (let method of methods[this.currentPage]) {
+          method.call(this)
+        }
+      }
+
+    }, 100)
+
   }
 }
 
