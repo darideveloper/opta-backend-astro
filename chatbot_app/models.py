@@ -41,6 +41,7 @@ class Respuesta(models.Model):
     id = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=200)
     contenido = models.TextField()
+    image = models.ImageField(upload_to='respuestas/', null=True, blank=True)
     prioridad = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
     )

@@ -57,7 +57,7 @@ class AdminSetup {
           element: textArea,
           toolbar: [
             "bold", "italic", "heading", "|",
-            "quote", "code", "link", "image", "|",
+            "quote", "code", "link", "|",
             "unordered-list", "ordered-list", "|",
             "undo", "redo", "|",
             "preview",
