@@ -60,7 +60,12 @@ class Respuesta(models.Model):
     def titulo_clean(self):
         return self.titulo if self.titulo else "Sin Título"
     
+    @property
+    def submomento_str(self):
+        return f'Respuesta al submomento: "{self.submomento.nombre}"'
+    
     titulo_clean.fget.short_description = 'Título'
+    submomento_str.fget.short_description = 'Submomento'
     
 
 class Documento(models.Model):

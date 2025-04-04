@@ -29,7 +29,7 @@ class SubmomentoAdmin(admin.ModelAdmin):
 
 @admin.register(models.Respuesta)
 class RespuestaAdmin(admin.ModelAdmin):
-    list_display = ("titulo_clean", "prioridad", "submomento")
+    list_display = ("submomento_str", "titulo_clean", "prioridad", "submomento")
     list_filter = ("submomento",)
     search_fields = ("titulo", "contenido")
     list_per_page = 20
