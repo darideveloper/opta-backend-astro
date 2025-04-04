@@ -33,12 +33,17 @@ class AdminSetup {
   /**
    * Setup the style for the top menu links
    */
-  #setupTopmenuLinksStyle() {
+  #setupTopmenuLinks() {
     const menuItems = document.querySelectorAll('.d-sm-inline-block a.nav-link')
     menuItems.forEach(item => {
+
+      // Style like a button
       item.classList.add('btn')
       item.classList.add('btn-primary')
       item.classList.add('text-light')
+
+      // Open in new tab
+      item.setAttribute('target', '_blank')
     })
   }
 
@@ -84,7 +89,7 @@ class AdminSetup {
 
     setTimeout(() => {
       // Global methods
-      this.#setupTopmenuLinksStyle()
+      this.#setupTopmenuLinks()
 
       // Methods to run for each page
       const methods = {
