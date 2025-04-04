@@ -24,7 +24,7 @@ from chatbot_app.serializers import (
 # Api classes
 class TipoLeadViewSet(viewsets.ModelViewSet):
     serializer_class = TipoLeadSerializer
-    queryset = TipoLead.objects.all()
+    queryset = TipoLead.objects.all().order_by("id")
 
 
 class ProgramaViewSet(viewsets.ModelViewSet):
