@@ -31,3 +31,13 @@ tag.tagify__input
 
         > div
             max-width: 100% !important
+
+// Customize markdown
+.CodeMirror 
+
+    // Underline to code blocks
+    pre.CodeMirror-line .cm-comment
+        text-decoration: underline
+
+    .cm-formatting.cm-formatting-code.cm-comment
+        display: none

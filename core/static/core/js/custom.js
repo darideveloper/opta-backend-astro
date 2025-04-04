@@ -65,6 +65,15 @@ class AdminSetup {
           spellChecker: false,
         })
       })
+
+      // Cahnge code button with uderline
+      const codeButton = document.querySelector('a.fa-code')
+      if (codeButton) {
+        codeButton.classList.remove('fa-code')
+        codeButton.classList.add('fa-underline')
+        codeButton.setAttribute('title', 'Underline')
+        codeButton.setAttribute('data-command', 'underline')
+      }
     }, 100)
   }
 

@@ -28,4 +28,11 @@ tag.tagify__input {
 }
 .form-group.field-groups > .row > div, .form-group.field-user_permissions > .row > div {
   max-width: 100% !important;
+}
+
+.CodeMirror pre.CodeMirror-line .cm-comment {
+  text-decoration: underline;
+}
+.CodeMirror .cm-formatting.cm-formatting-code.cm-comment {
+  display: none;
 }/*# sourceMappingURL=custom.css.map */
