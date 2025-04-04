@@ -5,6 +5,7 @@ from chatbot_app import models
 @admin.register(models.TipoLead)
 class TipoLeadAdmin(admin.ModelAdmin):
     list_display = ("nombre",)
+    ordering = ("id",)
 
 
 @admin.register(models.Programa)
