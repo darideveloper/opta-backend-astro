@@ -17,7 +17,7 @@ class ProgramaAdmin(admin.ModelAdmin):
 @admin.register(models.Momento)
 class MomentoAdmin(admin.ModelAdmin):
     list_display = ("nombre", "programa")
-    list_filter = ("programa",)
+    list_filter = ("programa", "programa__tipo_lead")
 
 
 @admin.register(models.Submomento)
@@ -30,7 +30,12 @@ class SubmomentoAdmin(admin.ModelAdmin):
 @admin.register(models.Respuesta)
 class RespuestaAdmin(admin.ModelAdmin):
     list_display = ("submomento_str", "titulo_clean", "prioridad", "submomento")
-    list_filter = ("submomento",)
+    list_filter = (
+        "submomento",
+        "submomento__momento",
+        "submomento__momento__programa",
+        "submomento__momento__programa__tipo_lead",
+    )
     search_fields = ("titulo", "contenido")
     list_per_page = 20
 
