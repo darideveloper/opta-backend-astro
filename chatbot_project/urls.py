@@ -17,6 +17,7 @@ urlpatterns = [
     # Apps
     path('admin/', admin.site.urls),
     path('api/demo/', include('chatbot_app.urls')),
+    path('api/process/', include('process.urls')),
     path('', include('core.urls')),
     
     # Auth
