@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'chatbot_app',
     'core',
     'jazzmin',
+    'process',
     
     # Modules
     'corsheaders',
