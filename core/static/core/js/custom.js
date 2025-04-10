@@ -95,6 +95,7 @@ class AdminSetup {
       const methods = {
         "documentos": [() => {this.#setupTagify('[name="palabras_clave"]')}],
         "respuestas": [this.#setupMarkDown],
+        "5. respuestas": [this.#setupMarkDown],
       }
 
       // Run the methods for the current page
