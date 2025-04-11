@@ -89,6 +89,8 @@ class AdminSetup {
 
     if (!isUserRoot) {
 
+      const userApp = userGroup.split(' ')[0].toLowerCase()
+
       // Remove superuser and user permissions fields
       const selectors = [
         ".field-is_superuser",
@@ -104,12 +106,26 @@ class AdminSetup {
       })
 
       // Remove no app permissions
-      const userApp = userGroup.split(' ')[0].toLowerCase()
-      const gorupOptionSelector = ".filtered option"
-      const groupOptions = document.querySelectorAll(gorupOptionSelector)
+      const groupOptionSelector = ".filtered option"
+      const groupOptions = document.querySelectorAll(groupOptionSelector)
       console.log(groupOptions)
       groupOptions.forEach(option => {
         if (!option.title.toLowerCase().includes(userApp)) {
+          option.remove()
+        }
+      })
+
+      // Remove is super use filter
+      const superUserFilter = document.querySelector(".form-group:nth-child(2)")
+      if (superUserFilter) {
+        superUserFilter.remove()
+      }
+
+      // Remove user no app group filter
+      const groupFilterSelector = 'option[data-name="groups__id__exact"]'
+      const groupFilterOptions = document.querySelectorAll(groupFilterSelector)
+      groupFilterOptions.forEach(option => {
+        if (!option.textContent.toLowerCase().includes(userApp)) {
           option.remove()
         }
       })
@@ -127,7 +143,7 @@ class AdminSetup {
 
       // Methods to run for each page
       const methods = {
-        "documentos": [() => {this.#setupTagify('[name="palabras_clave"]')}],
+        "documentos": [() => { this.#setupTagify('[name="palabras_clave"]') }],
         "respuestas": [this.#setupMarkDown],
         "5. respuestas": [this.#setupMarkDown],
         "usuarios": [this.#disbaleUserPermissionsAndRoot],
