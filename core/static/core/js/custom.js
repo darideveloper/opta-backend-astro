@@ -116,7 +116,7 @@ class AdminSetup {
       })
 
       // Remove is super use filter
-      const superUserFilter = document.querySelector(".form-group:nth-child(2)")
+      const superUserFilter = document.querySelector(".changelist-search .form-group:nth-child(2)")
       if (superUserFilter) {
         superUserFilter.remove()
       }
