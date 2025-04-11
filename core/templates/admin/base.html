@@ -11,4 +11,10 @@
 <!-- Load markdown libraries -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+<script>
+  const isUserRoot = "{{USER_ROOT}}" == "True";
+  const userGroup = "{{USER_GROUP}}";
+  console.log({userGroup})
+</script>
 {% endblock %}

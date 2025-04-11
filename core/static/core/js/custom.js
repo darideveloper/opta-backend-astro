@@ -83,6 +83,40 @@ class AdminSetup {
   }
 
   /**
+   * Disable user permissions and root for no root users
+   */
+  #disbaleUserPermissionsAndRoot() {
+
+    if (!isUserRoot) {
+
+      // Remove superuser and user permissions fields
+      const selectors = [
+        ".field-is_superuser",
+        ".field-user_permissions"
+      ]
+
+      selectors.forEach(selector => {
+        const element = document.querySelector(selector)
+        console.log(selector, element)
+        if (element) {
+          element.remove()
+        }
+      })
+
+      // Remove no app permissions
+      const userApp = userGroup.split(' ')[0].toLowerCase()
+      const gorupOptionSelector = ".filtered option"
+      const groupOptions = document.querySelectorAll(gorupOptionSelector)
+      console.log(groupOptions)
+      groupOptions.forEach(option => {
+        if (!option.title.toLowerCase().includes(userApp)) {
+          option.remove()
+        }
+      })
+    }
+  }
+
+  /**
    * Run the functions for the current page
    */
   autorun() {
@@ -96,6 +130,7 @@ class AdminSetup {
         "documentos": [() => {this.#setupTagify('[name="palabras_clave"]')}],
         "respuestas": [this.#setupMarkDown],
         "5. respuestas": [this.#setupMarkDown],
+        "usuarios": [this.#disbaleUserPermissionsAndRoot],
       }
 
       // Run the methods for the current page
