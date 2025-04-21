@@ -89,15 +89,15 @@ class AdminSetup {
 
     setTimeout(() => {
       if (!isUserRoot) {
-  
+
         const userApp = userGroup.split(' ')[0].toLowerCase()
-  
+
         // Remove superuser and user permissions fields
         const selectors = [
           ".field-is_superuser",
           ".field-user_permissions"
         ]
-  
+
         selectors.forEach(selector => {
           const element = document.querySelector(selector)
           console.log(selector, element)
@@ -105,7 +105,7 @@ class AdminSetup {
             element.remove()
           }
         })
-  
+
         // Remove no app permissions
         const groupOptionSelector = ".filtered option"
         const groupOptions = document.querySelectorAll(groupOptionSelector)
@@ -115,13 +115,13 @@ class AdminSetup {
             option.remove()
           }
         })
-  
+
         // Remove is super use filter
         const superUserFilter = document.querySelector(".changelist-search .form-group:nth-child(2)")
         if (superUserFilter) {
           superUserFilter.remove()
         }
-  
+
         // Remove user no app group filter
         const groupFilterSelector = 'option[data-name="groups__id__exact"]'
         const groupFilterOptions = document.querySelectorAll(groupFilterSelector)
@@ -140,14 +140,14 @@ class AdminSetup {
   //  * This is only for the user edit view
   //  */
   // #removePermissions() {
-    
+
   //   // Validate we are in the edit view inmediately after save
   //   setTimeout(() => {
   //     const url = window.location.href
   //     const sucessLinkSelector = '.alert-success a'
   //     const sucessLink = document.querySelector(sucessLinkSelector)
   //     const sucessHref = sucessLink?.getAttribute('href')
- 
+
   //     if (url.includes('change') && url.includes(sucessHref)) {
   //       // Click in remove all permissions btn
   //       const removeBtnSelector = '#id_groups_remove_all_link'
@@ -203,7 +203,10 @@ class AdminSetup {
           // this.#removePermissions,
           this.#disbaleUserPermissionsAndRoot,
         ],
-        "entradas": [this.#setupMarkDown],
+        "entradas": [
+          this.#setupMarkDown,
+          () => { this.#setupTagify('[name="keywords"]') }
+        ],
       }
 
       // Run the methods for the current page
