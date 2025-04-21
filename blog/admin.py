@@ -1,8 +1,6 @@
 from django.contrib import admin
-from django.utils.html import format_html
 
 from blog import models
-from utils.media import get_media_url
 
 
 @admin.register(models.Post)

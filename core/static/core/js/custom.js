@@ -50,7 +50,7 @@ class AdminSetup {
   #setupMarkDown() {
 
     // Get text areas
-    const noMarkdownIds = [""]
+    const noMarkdownIds = ["description"]
     let textAreasSelector = 'div > textarea'
     textAreasSelector = noMarkdownIds.map(id => `${textAreasSelector}:not(#id_${id})`).join(", ")
     const textAreas = document.querySelectorAll(textAreasSelector)
@@ -203,6 +203,7 @@ class AdminSetup {
           // this.#removePermissions,
           this.#disbaleUserPermissionsAndRoot,
         ],
+        "entradas": [this.#setupMarkDown],
       }
 
       // Run the methods for the current page
