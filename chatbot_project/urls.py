@@ -18,6 +18,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/demo/', include('chatbot_app.urls')),
     path('api/process/', include('process.urls')),
+    path('api/blog/', include('blog.urls')),
     path('', include('core.urls')),
     
     # Auth
