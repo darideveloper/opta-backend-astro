@@ -26,10 +26,6 @@ class PostListItemSerializer(serializers.ModelSerializer):
 class PostDetailSerializer(PostListItemSerializer):
     """ Api serializer for Post model """
     
-    video_url = serializers.SerializerMethodField()
-    pdf_url = serializers.SerializerMethodField()
-    keywords = serializers.SerializerMethodField()
-    
     class Meta:
         model = models.Post
         fields = "__all__"
@@ -40,11 +36,3 @@ class PostDetailSerializer(PostListItemSerializer):
         keywords = json.loads(keywords_json)
         keywords_values = [keyword["value"] for keyword in keywords]
         return keywords_values
-    
-    def get_video_url(self, obj):
-        """ Get video url """
-        return get_media_url(obj.video_file)
-    
-    def get_pdf_url(self, obj):
-        """ Get PDF url """
-        return get_media_url(obj.pdf_file)
