@@ -30,19 +30,11 @@ class Post(models.Model):
     )
     author = models.CharField(max_length=255, verbose_name="Autor", default="Praxia")
     content = models.TextField(verbose_name="Contenido")
-    video_file = models.FileField(
-        upload_to="videos/",
-        verbose_name="Video",
-        blank=True,
-        null=True,
-        validators=[FileExtensionValidator(["mp4"])],
+    video_url = models.URLField(
+        max_length=255, verbose_name="Video URL", blank=True, null=True
     )
-    pdf_file = models.FileField(
-        upload_to="pdfs/",
-        verbose_name="PDF",
-        blank=True,
-        null=True,
-        validators=[FileExtensionValidator(["pdf"])],
+    pdf_url = models.URLField(
+        max_length=255, verbose_name="PDF URL", blank=True, null=True
     )
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name="Fecha de creación"
