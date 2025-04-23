@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import FileExtensionValidator
 
 
 class Post(models.Model):
@@ -27,10 +28,22 @@ class Post(models.Model):
         verbose_name="Palabras clave",
         help_text="Separadas por comas",
     )
-    author = models.CharField(
-        max_length=255, verbose_name="Autor", default="Praxia"
-    )
+    author = models.CharField(max_length=255, verbose_name="Autor", default="Praxia")
     content = models.TextField(verbose_name="Contenido")
+    video_file = models.FileField(
+        upload_to="videos/",
+        verbose_name="Video",
+        blank=True,
+        null=True,
+        validators=[FileExtensionValidator(["mp4"])],
+    )
+    pdf_file = models.FileField(
+        upload_to="pdfs/",
+        verbose_name="PDF",
+        blank=True,
+        null=True,
+        validators=[FileExtensionValidator(["pdf"])],
+    )
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name="Fecha de creación"
     )
@@ -53,10 +66,10 @@ class Image(models.Model):
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name="Fecha de creación"
     )
-    
+
     class Meta:
         verbose_name_plural = "Imágenes"
         verbose_name = "Imagen"
-        
+
     def __str__(self):
         return self.name
