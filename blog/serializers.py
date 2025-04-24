@@ -3,7 +3,6 @@ import json
 from rest_framework import serializers
 
 from blog import models
-from utils.media import get_media_url
 
 
 class PostListItemSerializer(serializers.ModelSerializer):
@@ -25,6 +24,8 @@ class PostListItemSerializer(serializers.ModelSerializer):
 
 class PostDetailSerializer(PostListItemSerializer):
     """ Api serializer for Post model """
+    
+    keywords = serializers.SerializerMethodField()
     
     class Meta:
         model = models.Post
