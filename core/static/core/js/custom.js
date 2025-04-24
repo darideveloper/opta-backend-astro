@@ -207,6 +207,7 @@ class AdminSetup {
           this.#setupMarkDown,
           () => { this.#setupTagify('[name="keywords"]') }
         ],
+        "6. documentos": [() => { this.#setupTagify('[name="palabras_clave"]') }],
       }
 
       // Run the methods for the current page
