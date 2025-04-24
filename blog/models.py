@@ -12,6 +12,11 @@ class Post(models.Model):
     lang = models.CharField(
         max_length=2, choices=LANGS, default="es", verbose_name="Idioma"
     )
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name="¿Está activo?",
+        help_text="¿Está activo? Si no está activo no se mostrará en la web",
+    )
     banner_image_url = models.CharField(
         max_length=255,
         verbose_name="Banner URL",
