@@ -9,4 +9,5 @@ router.register(r'posts', views.PostViewSet, 'posts')
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('download-file/', views.DownloadFileView.as_view(), name='download-file'),
 ]

@@ -16,6 +16,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 STORAGE_AWS = os.environ.get("STORAGE_AWS") == "True"
 LANDING_HOST = os.getenv('LANDING_HOST')
 HOST = os.getenv('HOST')
+DOWNLOAD_FILES_DOMAIN = os.getenv('DOWNLOAD_FILES_DOMAIN')
 
 print(f"DEBUG: {DEBUG}")
 print(f"STORAGE_AWS: {STORAGE_AWS}\n")

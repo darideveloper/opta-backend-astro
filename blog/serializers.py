@@ -37,3 +37,9 @@ class PostDetailSerializer(PostListItemSerializer):
         keywords = json.loads(keywords_json)
         keywords_values = [keyword["value"] for keyword in keywords]
         return keywords_values
+    
+    
+class FileURLSerializer(serializers.Serializer):
+    """ Serializer for file URL """
+    
+    url = serializers.URLField()
