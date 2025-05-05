@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     # Local apps
     'chatbot_app',
     'core',
-    'blog',
     'jazzmin',
     
     # Modules
