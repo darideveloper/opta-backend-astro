@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'core',
     'blog',
     'jazzmin',
-    'process',
     
     # Modules
     'corsheaders',
