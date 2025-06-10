@@ -12,6 +12,7 @@ class ViewsBaseTestCase(APITestCase):
         restricted_post: bool = True,
         restricted_put: bool = True,
         restricted_delete: bool = True,
+        restricted_unauthenticated_get: bool = True,
     ):
         """
         Set up the test case with a test user and token.
@@ -26,6 +27,8 @@ class ViewsBaseTestCase(APITestCase):
                 Defaults to True.
             restricted_delete (bool, optional): Whether DELETE requests are restricted.
                 Defaults to True.
+            restricted_unauthenticated_get (bool, optional):
+                Whether unauthenticated GET requests are restricted. Defaults to True.
         """
 
         # Create a test user
@@ -58,6 +61,7 @@ class ViewsBaseTestCase(APITestCase):
         self.restricted_post = restricted_post
         self.restricted_put = restricted_put
         self.restricted_delete = restricted_delete
+        self.restricted_unauthenticated_get = restricted_unauthenticated_get
 
     def validate_invalid_method(self, method: str):
         """Validate that the given method is not allowed on the endpoint"""
@@ -93,10 +97,11 @@ class ViewsBaseTestCase(APITestCase):
         """Test unauthenticated user get request"""
 
         # Remove token from client credentials
-        self.client.credentials(HTTP_AUTHORIZATION="")
+        if self.restricted_unauthenticated_get:
+            self.client.credentials(HTTP_AUTHORIZATION="")
 
-        # Make request
-        response = self.client.get(self.endpoint)
+            # Make request
+            response = self.client.get(self.endpoint)
 
-        # Check response
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+            # Check response
+            self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
