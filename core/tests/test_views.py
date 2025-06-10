@@ -2,6 +2,8 @@ from rest_framework.test import APITestCase
 from rest_framework import status
 from django.contrib.auth.models import User
 
+from core.tests_base.test_views import ViewsBaseTestCase
+
 
 class CustomObtainAuthTokenTestCase(APITestCase):
     
@@ -11,8 +13,8 @@ class CustomObtainAuthTokenTestCase(APITestCase):
         cls.username = "testuser"
         cls.password = "testpassword"
         cls.user = User.objects.create_user(
-            username="testuser",
-            password="testpassword"
+            username=cls.username,
+            password=cls.password
         )
         
         # Setup endpoints
@@ -84,3 +86,34 @@ class CustomObtainAuthTokenTestCase(APITestCase):
         
         # Ensure the new token is different from the initial one
         self.assertNotEqual(initial_token, new_token)
+
+
+class UserViewSetTestCase(ViewsBaseTestCase):
+    
+    def setUp(self):
+        """
+        Set up the test case with a test user and token.
+        """
+        super().setUp("/api/user/")
+        
+    def test_get_current_user_data(self):
+        """
+        Test retrieving the current user's data.
+        """
+        
+        # get response
+        response = self.client.get(self.endpoint)
+                
+        # validate response
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        
+        # Validate only response 1 user (the current user)
+        self.assertEqual(len(response.data), 1)
+        
+        # validate user data
+        user_data = response.data[0]
+        self.assertEqual(user_data['id'], self.user.id)
+        self.assertEqual(user_data['username'], self.user.username)
+        self.assertEqual(user_data['first_name'], self.user.first_name)
+        self.assertEqual(user_data['last_name'], self.user.last_name)
+        self.assertEqual(user_data['is_staff'], self.user.is_staff)
