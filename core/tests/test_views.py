@@ -94,7 +94,7 @@ class UserViewSetTestCase(ViewsBaseTestCase):
         """
         Set up the test case with a test user and token.
         """
-        super().setUp("/api/user/")
+        super().setUp("/api/user/", restricted_get=False)
         
     def test_get_current_user_data(self):
         """
