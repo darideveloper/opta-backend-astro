@@ -114,7 +114,7 @@ class TestchatbotAppModelsBase(TestCase):
         self,
         titulo: str = "Test Respuesta",
         contenido: str = "This is a test response.",
-        image_name: str = "test_image.webp",
+        image_name: str = "test_image.png",
         prioridad: int = 1,
         submomento: models.Submomento = None,
         documento: models.Documento = None,
@@ -127,7 +127,7 @@ class TestchatbotAppModelsBase(TestCase):
             contenido (str, optional): The content of the Respuesta.
                 Defaults to "This is a test response.".
             image_name (str, optional): The name of the image file
-                associated with the Respuesta. Defaults to "test_image.webp".
+                associated with the Respuesta. Defaults to "test_image.png".
             prioridad (int, optional): The priority of the Respuesta.
                 Defaults to 1.
             submomento (models.Submomento, optional): The Submomento instance
