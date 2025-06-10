@@ -7,7 +7,7 @@ from rest_framework.authtoken.models import Token
 from core import serializers
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = serializers.UserSerializer
 
