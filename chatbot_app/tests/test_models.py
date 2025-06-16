@@ -1,7 +1,7 @@
-from core.tests_base.test_models import TestchatbotAppModelsBase
+from core.tests_base.test_models import TestChatbotAppModelsBase
 
 
-class RespuestaTestCase(TestchatbotAppModelsBase):
+class RespuestaTestCase(TestChatbotAppModelsBase):
 
     def setUp(self):
         # Create initial data

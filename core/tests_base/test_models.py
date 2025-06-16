@@ -4,7 +4,7 @@ from chatbot_app import models
 from utils.media import get_test_file
 
 
-class TestchatbotAppModelsBase(TestCase):
+class TestChatbotAppModelsBase(TestCase):
     """Base class for chatbot_app models tests."""
 
     def create_tipo_lead(self, nombre: str = "Test Tipo Lead") -> models.TipoLead:

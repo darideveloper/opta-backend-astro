@@ -7,8 +7,8 @@ class ViewsBaseTestCase(APITestCase):
 
     def setUp(
         self,
-        endpoint: str = "/api/",
-        restricted_get: bool = True,
+        endpoint: str = "/api/demo/",
+        restricted_get: bool = False,
         restricted_post: bool = True,
         restricted_put: bool = True,
         restricted_delete: bool = True,

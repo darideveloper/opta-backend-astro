@@ -22,12 +22,12 @@ from chatbot_app.serializers import (
 
 
 # Api classes
-class TipoLeadViewSet(viewsets.ModelViewSet):
+class TipoLeadViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = TipoLeadSerializer
     queryset = TipoLead.objects.all().order_by("id")
 
 
-class ProgramaViewSet(viewsets.ModelViewSet):
+class ProgramaViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Programa.objects.all()
     serializer_class = ProgramaSerializer
 
@@ -41,7 +41,7 @@ class ProgramaViewSet(viewsets.ModelViewSet):
         return queryset
 
 
-class MomentoViewSet(viewsets.ModelViewSet):
+class MomentoViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Momento.objects.all()
     serializer_class = MomentoSerializer
 
@@ -55,7 +55,7 @@ class MomentoViewSet(viewsets.ModelViewSet):
         return queryset
 
 
-class SubmomentoViewSet(viewsets.ModelViewSet):
+class SubmomentoViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Submomento.objects.all()
     serializer_class = SubmomentoSerializer
 
@@ -69,7 +69,7 @@ class SubmomentoViewSet(viewsets.ModelViewSet):
         return queryset
 
 
-class RespuestaViewSet(viewsets.ModelViewSet):
+class RespuestaViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Respuesta.objects.all()
     serializer_class = RespuestaSerializer
 
@@ -84,7 +84,7 @@ class RespuestaViewSet(viewsets.ModelViewSet):
         return queryset
 
 
-class DocumentoViewSet(viewsets.ModelViewSet):
+class DocumentoViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = DocumentoSerializer
 
     def get_queryset(self):
