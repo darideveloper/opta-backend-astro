@@ -358,3 +358,88 @@ class RespuestaViewSetTestCase(ViewsBaseTestCase, TestChatbotAppModelsBase):
 
         # check response length
         self.assertEqual(len(response.data), 0)
+
+
+class DocumentoViewSetTestCase(ViewsBaseTestCase, TestChatbotAppModelsBase):
+
+    def setUp(self):
+        """
+        Set up the test case with initial data and endpoint.
+        """
+        super().setUp("/api/demo/documento/")
+
+        # Create initial data
+        self.documento = self.create_documento()
+
+    def test_get_single_no_keywords(self):
+        """
+        Test try to retrive a single Documento instance.
+        Expect no data to be returned.
+        """
+        
+        # get data and validate response
+        response = self.client.get(self.endpoint)
+        self.assertEqual(response.status_code, 200)
+
+        # check response length
+        self.assertEqual(len(response.data), 0)
+        
+    def test_get_single_keywords(self):
+        """
+        Test try to retrive a single Documento instance.
+        Expect no data to be returned.
+        """
+        
+        # get data and validate response submiting query parameters
+        response = self.client.get(self.endpoint, {"tags": "test,documento"})
+        self.assertEqual(response.status_code, 200)
+
+        # check response length
+        self.assertEqual(len(response.data), 1)
+
+        # validate the data of the first Documento
+        documento_data = response.data[0]
+        self.assertEqual(documento_data["id"], self.documento.id)
+        self.assertEqual(documento_data["nombre"], self.documento.nombre)
+        self.assertIn(self.documento.archivo.url, documento_data["archivo"])
+
+    def test_get_many(self):
+        """
+        Test retrieving multiple Documento instances.
+        """
+
+        self.create_documento(
+            palabras_clave=["b", "documento"],
+        )
+        self.create_documento(
+            palabras_clave=["c", "documento"],
+        )
+        
+        # get data and validate response
+        response = self.client.get(self.endpoint, {"tags": "test,documento"})
+        self.assertEqual(response.status_code, 200)
+
+        # check response length
+        self.assertEqual(len(response.data), 3)
+
+        # validate the data of each Documento
+        result_data = response.data
+        for result in result_data:
+            documento_instance = models.Documento.objects.get(id=result["id"])
+            self.assertIsNotNone(documento_instance)
+            self.assertEqual(result["nombre"], documento_instance.nombre)
+
+    def test_get_no_data(self):
+        """
+        Test retrieving no Documento instances.
+        """
+
+        # delete the created Documento
+        self.documento.delete()
+
+        # get data and validate response
+        response = self.client.get(self.endpoint)
+        self.assertEqual(response.status_code, 200)
+
+        # check response length
+        self.assertEqual(len(response.data), 0)

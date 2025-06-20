@@ -98,7 +98,9 @@ class TestChatbotAppModelsBase(TestCase):
         palabras_clave = map(
             lambda palabra_clave: {"value": palabra_clave}, palabras_clave
         )
-        palabras_clave_str = f"[{','.join(map(str, palabras_clave))}]"
+        palabras_clave_str = f"[{','.join(map(str, palabras_clave))}]".replace(
+            "'", '"'
+        ).replace(" ", "")
 
         # Get test file
         test_file = get_test_file(archivo_name)
