@@ -14,7 +14,7 @@ from selenium.webdriver.common.by import By
 class TestAdminBase(TestCase):
     """ Base class to test admin """
     
-    def setUp(self):
+    def setUp(self, endpoint: str = "/admin/"):
         """ Load data and create admin user """
         
         # Load data
@@ -25,6 +25,9 @@ class TestAdminBase(TestCase):
         
         # Login in client
         self.client.login(username=self.admin_user, password=self.admin_pass)
+        
+        # Save endpoint
+        self.endpoint = endpoint
     
     def create_admin_user(self) -> tuple[str, str, User]:
         """ Create a new admin user and return it
@@ -46,7 +49,7 @@ class TestAdminBase(TestCase):
         
         return user.username, password, user
     
-    def submit_search_bar(self, endpoint: str, search_text: str = "test"):
+    def test_search_bar(self, search_text: str = "test"):
         """ Validate search bar in admin page
         
         Args:
@@ -55,12 +58,12 @@ class TestAdminBase(TestCase):
         """
         
         # Fix endpoint prefix if needed
-        if not endpoint.startswith("/admin/"):
-            endpoint = f"/admin/{endpoint.lstrip('/')}"
+        if not self.endpoint.startswith("/admin/"):
+            self.endpoint = f"/admin/{self.endpoint.lstrip('/')}"
         
         # Get response
-        response = self.client.get(f"{endpoint}", {"q": search_text})
-        print(f"Testing search bar in {endpoint} with text '{search_text}'")
+        response = self.client.get(f"{self.endpoint}", {"q": search_text})
+        print(f"Testing search bar in {self.endpoint} with text '{search_text}'")
         
         # Check if the response is valid
         self.assertEqual(response.status_code, 200)
@@ -72,7 +75,7 @@ class TestAdminBase(TestCase):
 class TestAdminSeleniumBase(TestAdminBase, LiveServerTestCase):
     """ Base class to test admin with selenium (login and setup) """
     
-    def setUp(self, endpont="/admin/"):
+    def setUp(self, endpoint="/admin/"):
         """ Load data, setup and login in each test """
         
         # Load data
@@ -82,7 +85,7 @@ class TestAdminSeleniumBase(TestAdminBase, LiveServerTestCase):
         self.admin_user, self.admin_pass, self.admin = self.create_admin_user()
         
         # Setup selenium
-        self.endpoint = endpont
+        self.endpoint = endpoint
         self.__setup_selenium__()
         self.__login__()
 

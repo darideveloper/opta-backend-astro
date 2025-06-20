@@ -1,4 +1,4 @@
-from core.tests_base.test_admin import TestAdminSeleniumBase
+from core.tests_base.test_admin import TestAdminSeleniumBase, TestAdminBase
 from core.tests_base.test_models import TestChatbotAppModelsBase
 
 
@@ -9,7 +9,7 @@ class DocumentoAdminTestCaseLive(TestAdminSeleniumBase, TestChatbotAppModelsBase
         """ Admin view base data """
         
         # Endpoint
-        super().setUp(endpont="/admin/chatbot_app/documento")
+        super().setUp(endpoint="/admin/chatbot_app/documento")
         
         # Data
         self.keywords = ["test-1", "test-2", "test-3"]
@@ -43,7 +43,7 @@ class RespuestaAdminTestCaseLive(TestAdminSeleniumBase, TestChatbotAppModelsBase
         """ Admin view base data """
         
         # Endpoint
-        super().setUp(endpont="/admin/chatbot_app/respuesta")
+        super().setUp(endpoint="/admin/chatbot_app/respuesta")
         
         # Data
         self.create_respuesta()
@@ -61,4 +61,23 @@ class RespuestaAdminTestCaseLive(TestAdminSeleniumBase, TestChatbotAppModelsBase
         # check editor toolbar is loaded
         elems = self.get_selenium_elems(selectors)
         self.assertIsNotNone(elems["editor_toolbar"])
+    
+    
+class DocumentoAdminTestCase(TestAdminBase):
+    """ Test DocumentoAdmin """
+    
+    def setUp(self):
+        
+        # Endpoint
+        super().setUp(endpoint="/admin/chatbot_app/documento/")
+        
+        
+class RespuestaAdminTestCase(TestAdminBase):
+    """ Test RespuestaAdmin """
+    
+    def setUp(self):
+        
+        # Endpoint
+        super().setUp(endpoint="/admin/chatbot_app/respuesta/")
+        
     
